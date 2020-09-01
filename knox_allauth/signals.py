@@ -13,12 +13,12 @@ from .models import CustomUser as User
 # 		user.save()
 
 @receiver(user_signed_up)
-def populate_profile(sociallogin, user, **kwargs):    
-
-    if sociallogin.account.provider == 'facebook':
-        user_data = user.socialaccount_set.filter(provider='facebook')[0].extra_data
-        #picture_url = "http://graph.facebook.com/" + sociallogin.account.uid + "/picture?type=large"            
-        #email = user_data['email']
-        name = user_data['name']
-    user.name = name
-    user.save()
+def populate_profile(sociallogin, user, **kwargs):
+    if sociallogin is not None:
+	    if sociallogin.account.provider == 'facebook':
+	        user_data = user.socialaccount_set.filter(provider='facebook')[0].extra_data
+	        #picture_url = "http://graph.facebook.com/" + sociallogin.account.uid + "/picture?type=large"            
+	        #email = user_data['email']
+	        name = user_data['name']
+	    user.name = name
+	    user.save()

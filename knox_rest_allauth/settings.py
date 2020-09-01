@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'knox_allauth.apps.KnoxAllauthConfig',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 
 ]
 
